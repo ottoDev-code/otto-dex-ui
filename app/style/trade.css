@@ -1,0 +1,223 @@
+#trade-container {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+  height: 100vh; /* Ensures the section fills the viewport height */
+  background-color: rgba(17, 48, 113, 1);
+  /* justify-items: left; */
+}
+
+#trade-header-container,
+#trade-button-container,
+#trade-body-container {
+  width: 70%;
+  margin-left: 15%;
+  margin-right: 5%;
+}
+
+#trade-header-container h2{
+  color: #fff;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+#trade-header-container p{
+  color: rgba(94 42, 231, 1);
+  font-size: 14px;
+  text-align: left;
+}
+
+#trade-button-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-evenly;
+  margin-top: 20px;
+  border: 1px solid rgba(83, 105, 137, 1);
+  padding: 3px;
+  background-color: rgba(11, 49, 103, 1);
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+#trade-button-container div .trade-button{
+  display: inline-block;
+  /* padding: 10px 107px; */
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 35%;
+  padding-right: 35%;
+  color: white;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+#trade-button-container div .trade-button:hover{
+  background-color: rgba(11, 49, 103, 0.6);
+  opacity: 0.8;
+}
+
+#trade-button-container div #swap-button{
+  background-color: rgba(94 42, 231, 1);
+
+}
+
+#trade-body-container{
+  background-color: rgba(11, 49, 103, 1);
+  padding: 10px;
+  border: 1px solid rgba(83, 105, 137, 1);
+  border-radius: 10px;
+}
+
+.trade-body-input {
+  width: 100%;
+}
+
+.trade-body-input .label{
+  font-size: 14px;
+  font-weight: 100px;
+  color: #fff;
+  text-transform: capitalize;
+  margin-bottom: 5px;
+}
+
+.trade-body-input .input-container{
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  border: 1px solid rgba(83, 105, 137, 1);
+  border-radius: 10px;
+}
+
+.trade-body-input input{
+  background-color: rgba(11, 49, 103, 1);
+  border: none;
+  color: rgba(83, 105, 137, 1);
+  font-size: 14px;
+}
+
+.trade-body-input input:focus{
+  outline: none;
+}
+
+.trade-body-input .input-container .search-token{
+  display: flex;
+  border: 1px solid rgba(10, 39, 86, 1);
+  border-radius: 10px;
+  padding: 3px;
+}
+
+.trade-body-input .input-container .search-token select{
+  background-color: rgba(11, 49, 103, 1);
+  color: #fff;
+  font-size: 14px;
+}
+
+.trade-body-input .input-container .search-token select:focus{
+  outline:  none;
+}
+
+.token-image {
+  width: 20px;
+  height: 20px;
+}
+
+.token-image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.trade-body-input .trade-info-container{
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.trade-body-input .trade-info-container p{
+  font-size: 11px;
+  color: rgba(83, 105, 137, 1);
+  font-weight: 300;
+}
+
+.trade-body-input .trade-info-container p span{
+  color: #fff;
+}
+
+#connet-icon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+#submit-button{
+  text-align: center;
+  background-color: rgba(94, 42, 231, 1);
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+#submit-button button{
+  display: inline-block;
+  padding: 10px 0;
+  color: #fff;
+  text-transform: capitalize;
+  font-weight: 200;
+}
+
+#submit-button button:hover{
+  opacity: 0.6;
+}
+  
+/* .trade-info-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 0.9rem;
+  color: #666;
+} */
+
+
+
+
+
+
+@media only screen and (min-width: 750px) {
+  #trade-header-container,
+  #trade-button-container,
+  #trade-body-container {
+    width: 40%;
+    margin-left: 30%;
+    margin-right: 30%;
+  }
+
+  #trade-button-container div .trade-button{
+    padding-left: 43%;
+    padding-right: 43%;
+  }
+
+  #trade-body-container{
+    padding: 30px;
+  }
+
+  .trade-body-input .input-container{
+    padding: 8px;
+  }
+
+  .trade-body-input .input-container .search-token{
+    padding: 7px;
+  }
+}
+
+
+@media only screen and (min-width: 900px) {
+  #trade-button-container div .trade-button{
+    /* padding: 10px 107px;  */
+  }
+  
+}
+  
