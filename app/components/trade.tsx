@@ -2,7 +2,7 @@
 import React, {useState, useRef } from "react";
 import  "../style/trade.css";
 import { FaArrowCircleDown } from "react-icons/fa";
-import logo from '../public/image/near.jpeg'
+import logo from '../public/image/logo.jpeg'
 
 export const Trade = () =>{
 

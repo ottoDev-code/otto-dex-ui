@@ -4,7 +4,7 @@ import  "../style/nav.css";
 import Image from "next/image";
 import { FaBars, FaTimes } from "react-icons/fa";
 
-import logo from '../public/image/near.jpeg'
+import logo from '../public/image/logo.jpeg'
 
 export const Nav = ({NavHandler}: any) =>{
 
@@ -49,7 +49,7 @@ export const Nav = ({NavHandler}: any) =>{
                                             <a className="link" onClick={() => { window.location.href = '/integration/pool'}}>Pool</a>
                                         </li>  
                                         <li>
-                                            <a className="link">Explore</a>
+                                            <a className="link" onClick={() => { window.location.href = '/integration/removeLiquidity'}}>remove pool</a>
                                         </li>    
 
                                          <li>
@@ -75,7 +75,7 @@ export const Nav = ({NavHandler}: any) =>{
                                     <a className="side_link" onClick={() => { window.location.href = '/integration/pool';}}>Pool</a>
                                 </li>  
                                 <li>
-                                    <a className="side_link" onClick={() => { window.location.href = '/';}}>Explore</a>
+                                    <a className="side_link" onClick={() => { window.location.href = '/integration/removeLiquidity';}}>remove pool</a>
                                 </li>   
                                 <li>
                                     <a className="side_link start" onClick={() => { window.location.href = '/';}}>Connect wallet</a>

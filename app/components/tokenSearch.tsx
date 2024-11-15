@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import  "../style/tokenSearch.css";
 import { FaPlus, FaMagnifyingGlass, FaRegStar, FaX } from "react-icons/fa6";
-import logo from '../public/image/near.jpeg'
+import logo from '../public/image/logo.jpeg'
 
 const tokenList = [
     { name: "USDT", symbol: "USDT", image: "/image/usdt.png" },

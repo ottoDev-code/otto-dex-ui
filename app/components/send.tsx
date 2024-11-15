@@ -1,7 +1,7 @@
 "use client"
 import React, {useState, useRef } from "react";
 import  "../style/send.css";
-import logo from '../public/image/near.jpeg'
+import logo from '../public/image/logo.jpeg'
 
 export const Send = () =>{
 

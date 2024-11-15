@@ -1,7 +1,7 @@
 "use client"
 import React, {useState, useRef } from "react";
 import  "../style/pool.css";
-import logo from '../public/image/near.jpeg'
+import logo from '../public/image/logo.jpeg'
 import { FaPlus, FaRegCircle } from "react-icons/fa6";
 import TokenSearch from "./tokenSearch";
 
