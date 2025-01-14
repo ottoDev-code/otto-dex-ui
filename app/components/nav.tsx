@@ -3,30 +3,27 @@ import React, {useState, useRef } from "react";
 import  "../style/nav.css";
 import Image from "next/image";
 import { FaBars, FaTimes } from "react-icons/fa";
-
 import logo from '../public/image/logo.jpeg'
+import { useBlockchain } from "../blockchain/blockChainContext";
+
+declare global {
+    interface Window {
+      ethereum?: any;
+    }
+}
 
 export const Nav = ({NavHandler}: any) =>{
+    let showRef = useRef(null);
+    let [openSideBar, setOpenSideBar] = useState(false)
+    const { walletAddress, connectWallet, disconnectWallet } = useBlockchain(); 
 
-        let showRef = useRef(null);
-    
-        let [openSideBar, setOpenSideBar] = useState(false)
-    
-        let showSideBar = () => {
-            // let sidebar = showRef.current; 
-            // sidebar.classList.toggle('show_hight');
-    
-            // NavHandler();
-            setOpenSideBar(true)
-        }
-    
-        let closeSideBar = () => {
-            //let sidebar = showRef.current; 
-            //sidebar.classList.toggle('show_hight');
-            // NavHandler();
-            setOpenSideBar(false)
-        }
+    let showSideBar = () => {
+        setOpenSideBar(true)
+    }
 
+    let closeSideBar = () => {
+        setOpenSideBar(false)
+    }
 
     return(<>
         <nav>
@@ -51,10 +48,13 @@ export const Nav = ({NavHandler}: any) =>{
                                         <li>
                                             <a className="link" onClick={() => { window.location.href = '/integration/removeLiquidity'}}>remove pool</a>
                                         </li>    
-
-                                         <li>
-                                            <a className="link start" onClick={() => { window.location.href = '/'}}>Connect wallet</a>
-                                        </li>                                
+                                        <li>
+                                        {
+                                            walletAddress ?
+                                            <a className="link start"onClick={disconnectWallet}>Disconnet</a> :
+                                            <a className="link start"onClick={connectWallet}>Connect</a>
+                                        }
+                                </li>    
                                         
                                     </ul>
                                 </div>
@@ -78,7 +78,12 @@ export const Nav = ({NavHandler}: any) =>{
                                     <a className="side_link" onClick={() => { window.location.href = '/integration/removeLiquidity';}}>remove pool</a>
                                 </li>   
                                 <li>
-                                    <a className="side_link start" onClick={() => { window.location.href = '/';}}>Connect wallet</a>
+                                   {
+                                    walletAddress ?
+                                    <a className="link start"onClick={disconnectWallet}>Disconnet</a> :
+                                    <a className="link start"onClick={connectWallet}>Connect</a>
+                                   }
+                                    
                                 </li>                          
                             </ul>
                         </div>

@@ -84,16 +84,17 @@
 
 .trade-body-input .input-container{
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   padding: 5px;
   border: 1px solid rgba(83, 105, 137, 1);
   border-radius: 10px;
 }
 
 .trade-body-input input{
+  width: 70%;
   background-color: rgba(11, 49, 103, 1);
   border: none;
-  color: rgba(83, 105, 137, 1);
+  color: rgba(255, 255, 255, 0.9);
   font-size: 14px;
 }
 
@@ -102,10 +103,15 @@
 }
 
 .trade-body-input .input-container .search-token{
+  width: 30%;
   display: flex;
-  border: 1px solid rgba(10, 39, 86, 1);
-  border-radius: 10px;
+  /* border: 1px solid rgba(10, 39, 86, 1); */
+  /* border-radius: 10px; */
+  justify-content: space-between;
+  /* align-content: space-between; */
+  align-items: center;
   padding: 3px;
+  cursor: pointer;
 }
 
 .trade-body-input .input-container .search-token select{
@@ -118,9 +124,15 @@
   outline:  none;
 }
 
+.search-token p {
+  color: rgba(255, 255, 255, 1);
+  font-size: 12px;
+}
+
 .token-image {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
+  /* margin-right: 10px; */
 }
 
 .token-image img {
@@ -137,7 +149,7 @@
 
 .trade-body-input .trade-info-container p{
   font-size: 11px;
-  color: rgba(83, 105, 137, 1);
+  color: rgba(255, 255, 255, 0.8);
   font-weight: 300;
 }
 

@@ -5,32 +5,23 @@ import  "../style/tokenSearch.css";
 import { FaPlus, FaMagnifyingGlass, FaRegStar, FaX } from "react-icons/fa6";
 import logo from '../public/image/logo.jpeg'
 
+import { useBlockchain } from "../blockchain/blockChainContext";
+import { formatEther } from "ethers";
+
+import { tokenReadFromContract } from "../blockchain/blockChianFunctionInstance";
+import { wOttoContractAddress } from "../blockchain/constant";
+
 const tokenList = [
-    { name: "USDT", symbol: "USDT", image: "/image/usdt.png" },
-    { name: "NEAR", symbol: "NEAR", image: "/image/near.jpeg" },
-    { name: "ETH", symbol: "ETH", image: "/image/eth.png" },
-    { name: "USDT", symbol: "USDT", image: "/image/usdt.png" },
-    { name: "NEAR", symbol: "NEAR", image: "/image/near.jpeg" },
-    { name: "ETH", symbol: "ETH", image: "/image/eth.png" },
-    { name: "USDT", symbol: "USDT", image: "/image/usdt.png" },
-    { name: "NEAR", symbol: "NEAR", image: "/image/near.jpeg" },
-    { name: "ETH", symbol: "ETH", image: "/image/eth.png" },
-    { name: "USDT", symbol: "USDT", image: "/image/usdt.png" },
-    { name: "NEAR", symbol: "NEAR", image: "/image/near.jpeg" },
-    { name: "ETH", symbol: "ETH", image: "/image/eth.png" },
-    { name: "USDT", symbol: "USDT", image: "/image/usdt.png" },
-    { name: "NEAR", symbol: "NEAR", image: "/image/near.jpeg" },
-    { name: "ETH", symbol: "ETH", image: "/image/eth.png" },
-    { name: "USDT", symbol: "USDT", image: "/image/usdt.png" },
-    { name: "NEAR", symbol: "NEAR", image: "/image/near.jpeg" },
-    { name: "ETH", symbol: "ETH", image: "/image/eth.png" },
-    // Add more tokens here...
+    { name: "otto", symbol: "OTTO", image: logo.src, contract: "otto", balance: 0 },
+    { name: "wrapped Otto", symbol: "WOTTO", image: logo.src, contract: wOttoContractAddress, balance: 0 },
 ];
 
-type Token = {
+export type Token = {
     name: string;
     symbol: string;
-    image: string;
+    image: any;
+    contract: string;
+    balance: number;
 };
 
 interface TokenSelectorProps {
@@ -42,15 +33,34 @@ interface TokenSelectorProps {
 const TokenSearch: React.FC<TokenSelectorProps> = ({ onSelectToken, onClose }) => {
     const [search, setSearch] = useState("");
     const [filteredTokens, setFilteredTokens] = useState<Token[]>(tokenList);
+    const { walletAddress, tokenContractFunction} = useBlockchain(); 
 
-    const handleSearch = (e: any) => {
+    const handleSearch = async (e: any) => {
         const value = e.target.value;
         setSearch(value);
-        setFilteredTokens(
-            tokenList.filter((token) =>
-                token.name.toLowerCase().includes(value.toLowerCase())
-            )
-        );
+        let tokenMetadata
+        try {
+            tokenMetadata = await tokenContractFunction(value, "getTokenMetadata", [])
+        } catch (error) {
+            console.log("wale wale")
+           tokenMetadata = "logo"
+        }
+        // let tokenMetadata = await tokenContractFunction(value, "getTokenMetadata", [])
+        // if (!tokenMetadata) {
+        //     console.log("wale wale")
+        //     tokenMetadata = "logo"
+        // }
+        const tokenSymbol = await tokenContractFunction(value, "symbol", [])
+        const tokenName = await tokenContractFunction(value, "name", [])
+        const tokenBalance = await tokenContractFunction(value, "balanceOf", [walletAddress])
+        console.log("tokenSymbol", tokenSymbol)
+        console.log("tokenName", tokenName)
+        console.log("tokenMetadata", tokenMetadata)
+        console.log("tokenBalance", formatEther(tokenBalance.toString()))
+
+        const  token: Token = { name: tokenName, symbol: tokenSymbol, image: tokenMetadata[2], contract: value, balance: parseFloat(formatEther(tokenBalance.toString())) }
+        console.log("token", token)
+        setFilteredTokens([token])
     };
 
     return (
@@ -81,7 +91,7 @@ const TokenSearch: React.FC<TokenSelectorProps> = ({ onSelectToken, onClose }) =
                         className="token-item"
                         onClick={() => onSelectToken(token)}
                     >
-                        <img src={logo.src} alt={token.name} />
+                        <img src={token.image} alt={token.name} />
                         <div>
                             <p className="token-symbol">{token.symbol}</p>
                             <p className="token-name">{token.name}</p>
